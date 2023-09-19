@@ -4,6 +4,7 @@ using MarketConsoleApp.Data.Models;
 using MarketConsoleApp.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -327,6 +328,45 @@ namespace MarketConsoleApp.Services.Concrete
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void GetSalesByDateRange()
+        {
+            try
+            {
+                //Console.WriteLine("List of available sales:");
+                //ShowSales();
+                Console.WriteLine("Please Enter minimum  datetime");
+                var minDate = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
+              
+
+                Console.WriteLine("Please Enter maximum  datetime");
+                var maxDate = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
+
+                
+
+                var table = new ConsoleTable("ID", "Amount", "Quantity", "Date");
+
+                foreach (var sale in marketService.GetSalesByDateRange(minDate, maxDate))
+                {
+
+
+                    foreach (var item in sale.SaleItems)
+                    {
+                        table.AddRow(sale.Id, sale.Amount, item.Quantity, sale.Date);
+
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error {ex.Message}");
+                
             }
         }
 

@@ -103,6 +103,9 @@ namespace MarketConsoleApp.Helpers
                     case 4:
                         MenuService.ShowSales();
                         break;
+                    case 5:
+                        MenuService.GetSalesByDateRange();
+                        break;
                     case 0:
                         break;
                     default:

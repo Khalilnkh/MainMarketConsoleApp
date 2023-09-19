@@ -117,7 +117,7 @@ namespace MarketConsoleApp.Services.Concrete
         {
 
             if (saleItems == null || !saleItems.Any())
-                throw new Exception("There are no sale of products");
+                throw new Exception("There are no sale items");
 
             var sale = new Sale()
             {
@@ -152,8 +152,6 @@ namespace MarketConsoleApp.Services.Concrete
                 sale.SaleItems.Add(saleItem);
                 product.Quantity -= saleItem.Quantity;
 
-                
-
             }
 
             _sales.Add(sale);
@@ -178,6 +176,17 @@ namespace MarketConsoleApp.Services.Concrete
         public List<Sale> GetSales()
         {
             return _sales;
+        }
+
+        public List<Sale> GetSalesByDateRange(DateTime minDate, DateTime maxDate)
+        {
+            if (minDate > maxDate)
+                throw new Exception("Min price can't be larger than max price!");
+            var sale = _sales.Where(x => x.Date >= minDate && x.Date <= maxDate).ToList();
+            if (sale == null)
+                throw new Exception("Sale can not found");
+            return sale;
+           
         }
 
 
