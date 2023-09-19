@@ -1,0 +1,31 @@
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.exe
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.deps.json
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.runtimeconfig.json
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.dll
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.pdb
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.AssemblyInfoInputs.cache
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.AssemblyInfo.cs
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.dll
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\refint\MarketConsoleApp.dll
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.pdb
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.genruntimeconfig.cache
+C:\Users\81704\Desktop\FinalConsoleApp\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\ref\MarketConsoleApp.dll
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.AssemblyInfoInputs.cache
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.AssemblyInfo.cs
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.dll
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\refint\MarketConsoleApp.dll
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.pdb
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.exe
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.deps.json
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.runtimeconfig.json
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.dll
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\MarketConsoleApp.pdb
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\bin\Debug\net6.0\ConsoleTables.dll
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.csproj.AssemblyReference.cache
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.csproj.CopyComplete
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\MarketConsoleApp.genruntimeconfig.cache
+C:\Users\xeyru\OneDrive\İş masası\MarketConsoleApp\FinalConsoleApp-main\MarketConsoleApp\MarketConsoleApp\obj\Debug\net6.0\ref\MarketConsoleApp.dll
