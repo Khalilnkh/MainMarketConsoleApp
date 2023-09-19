@@ -264,7 +264,7 @@ namespace MarketConsoleApp.Services.Concrete
         {
             try
             {
-                var table = new ConsoleTable(" Sale ID", "Product Id", "Quantity", "Date","Amount");
+                var table = new ConsoleTable(" Sale ID", "Product Id", "Quantity", "Date");
                 //(ID, meblegi, mehsul sayi, tarixi)
 
                 foreach (var sale in marketService.GetSales())
@@ -273,7 +273,7 @@ namespace MarketConsoleApp.Services.Concrete
                     {
                         foreach (var item in sale.SaleItems)
                         {
-                            table.AddRow(sale.Id,item.Id,item.Quantity,sale.Date,sale.Amount);
+                            table.AddRow(sale.Id,item.Id,item.Quantity,sale.Date);
 
 
                         }
@@ -305,10 +305,16 @@ namespace MarketConsoleApp.Services.Concrete
                     Console.WriteLine($"Enter Product quantity of product {id}");
                     int quantity = int.Parse(Console.ReadLine()!);
 
+                    Console.WriteLine($"Enter Product quantity of product {id}");
+                    int amount = int.Parse(Console.ReadLine()!);
+
+
                     saleItems.Add(new SaleItem()
                     {
                         ProductId = id,
-                        Quantity = quantity
+                        Quantity = quantity,
+                        
+                       
                     });
 
                     Console.WriteLine("Would you like to add another product for sale (yes/no)");
@@ -358,6 +364,8 @@ namespace MarketConsoleApp.Services.Concrete
 
 
                     }
+                    table.Write();
+
 
                 }
 
@@ -368,6 +376,41 @@ namespace MarketConsoleApp.Services.Concrete
                 Console.WriteLine($"Error {ex.Message}");
                 
             }
+        }
+
+        public static void GetSalesByPriceRange()
+        {
+            try
+            {
+                Console.WriteLine("Please Add minimum price of product");
+                int minPrice = int.Parse(Console.ReadLine()!);
+
+                Console.WriteLine("Please Add maximum price of product");
+                int maxPrice = int.Parse(Console.ReadLine()!);
+
+                var table = new ConsoleTable("ID", "Amount", "Quantity", "Date");
+                foreach (var sale in marketService.GetSalesByPriceRange(minPrice, maxPrice))
+                {
+
+
+                    foreach (var item in sale.SaleItems)
+                    {
+                        table.AddRow(sale.Id, sale.Amount, item.Quantity, sale.Date);
+
+
+                    }
+                    table.Write();
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error {ex.Message}");
+            }
+
         }
 
 

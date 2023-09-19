@@ -24,6 +24,8 @@ namespace MarketConsoleApp.Services.Abstract
         public int DeleteSale(int id);
         public List<Sale> GetSales();
         public List<Sale> GetSalesByDateRange(DateTime minDate,DateTime maxDate);
+        public List<Sale> GetSalesByPriceRange(int minPrice, int maxPrice);
+
 
 
 
@@ -36,7 +38,6 @@ namespace MarketConsoleApp.Services.Abstract
         //public int ReturnProductOnSale(SaleItem saleItem,Product product,int quantity);
         //public List<Product> GetSales(int id, decimal amount, DateOnly date,int quantity);
 
-        //public List<Product> GetSalesByPriceRange(int id, decimal amount, DateOnly date, int quantity);
         //public List<Product> GetSalesByGivenDate(DateOnly date);
         //public int GetSalesByGivenId(int id);
 
