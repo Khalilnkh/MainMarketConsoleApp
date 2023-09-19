@@ -19,6 +19,7 @@ namespace MarketConsoleApp.Data.Models
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public List<SaleItem>SaleItems { get; set; } = null!;
+        public Product Products { get; set; } = null!;
 
 
 

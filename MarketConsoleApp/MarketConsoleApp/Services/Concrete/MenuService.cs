@@ -263,11 +263,20 @@ namespace MarketConsoleApp.Services.Concrete
         {
             try
             {
-                var table = new ConsoleTable("ID", "Ammount", "Date", "SalesItem");
+                var table = new ConsoleTable(" Sale ID", "Product Id", "Quantity", "Date","Amount");
+                //(ID, meblegi, mehsul sayi, tarixi)
 
                 foreach (var sale in marketService.GetSales())
                 {
-                    table.AddRow(sale.Id, sale.Amount, sale.Date,sale.SaleItems);
+                    foreach (var product in marketService.GetSales())
+                    {
+                        foreach (var item in sale.SaleItems)
+                        {
+                            table.AddRow(sale.Id,item.Id,item.Quantity,sale.Date,sale.Amount);
+
+
+                        }
+                    }
                 }
 
                 table.Write();
