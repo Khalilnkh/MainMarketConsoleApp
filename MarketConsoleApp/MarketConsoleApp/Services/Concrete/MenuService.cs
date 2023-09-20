@@ -264,19 +264,29 @@ namespace MarketConsoleApp.Services.Concrete
         {
             try
             {
-                var table = new ConsoleTable(" Sale ID", "Product Id", "Quantity", "Date");
+                var table = new ConsoleTable(" Sale ID", "Date", "Sale Amount");
                 //(ID, meblegi, mehsul sayi, tarixi)
 
                 foreach (var sale in marketService.GetSales())
                 {
-                    foreach (var product in marketService.GetSales())
+                    foreach (var product in marketService.GetProducts())
                     {
                         foreach (var item in sale.SaleItems)
                         {
-                            table.AddRow(sale.Id,item.Id,item.Quantity,sale.Date);
 
+                            var saleItem = new SaleItem()
+                            {
+                                SaleId = sale.Id,
+                                ProductId = product.Id,
+                                Quantity = product.Quantity,
+                            };
+                            sale.Amount = product.Quantity - saleItem.Quantity;
+                            table.AddRow(sale.Id, sale.Date, saleItem);
 
                         }
+
+
+
                     }
                 }
 
@@ -293,30 +303,23 @@ namespace MarketConsoleApp.Services.Concrete
             try
             {
 
-                Console.WriteLine("Enter count sale of items");
+                Console.WriteLine("Enter count of sale items");
                 int itemCount = int.Parse(Console.ReadLine()!);
 
                 var saleItems = new List<SaleItem>();
                 for (int i = 1; i <= itemCount; i++)
                 {
-                    Console.WriteLine($"Enter product Id of product {i}");
+                    Console.WriteLine($"Enter product Id for item {i}");
                     int id = int.Parse(Console.ReadLine()!);
 
-                    Console.WriteLine($"Enter Product quantity of product {id}");
+                    Console.WriteLine($"Enter Product quantity for product {id}");
                     int quantity = int.Parse(Console.ReadLine()!);
-
-                    Console.WriteLine($"Enter Product quantity of product {id}");
-                    int amount = int.Parse(Console.ReadLine()!);
-
 
                     saleItems.Add(new SaleItem()
                     {
                         ProductId = id,
-                        Quantity = quantity,
-                        
-                       
-                    });
-
+                        Quantity = quantity
+                    }); ;
                     Console.WriteLine("Would you like to add another product for sale (yes/no)");
                     string answer = Console.ReadLine()!;
                     if (answer != "yes")
@@ -337,6 +340,7 @@ namespace MarketConsoleApp.Services.Concrete
             }
         }
 
+
         public static void GetSalesByDateRange()
         {
             try
@@ -345,12 +349,12 @@ namespace MarketConsoleApp.Services.Concrete
                 //ShowSales();
                 Console.WriteLine("Please Enter minimum  datetime");
                 var minDate = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
-              
+
 
                 Console.WriteLine("Please Enter maximum  datetime");
                 var maxDate = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
 
-                
+
 
                 var table = new ConsoleTable("ID", "Amount", "Quantity", "Date");
 
@@ -374,7 +378,7 @@ namespace MarketConsoleApp.Services.Concrete
             {
 
                 Console.WriteLine($"Error {ex.Message}");
-                
+
             }
         }
 
@@ -409,6 +413,39 @@ namespace MarketConsoleApp.Services.Concrete
             {
 
                 Console.WriteLine($"Error {ex.Message}");
+            }
+
+        }
+
+        public static void GetSalesByGivenDate()
+        {
+            try
+            {
+                Console.WriteLine("Please Enter datetime");
+                var date = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
+                var table = new ConsoleTable("ID", "Amount", "Quantity", "Date");
+
+                foreach (var sale in marketService.GetSalesByGivenDate(date))
+                {
+
+
+                    foreach (var item in sale.SaleItems)
+                    {
+                        table.AddRow(sale.Id, sale.Amount, item.Quantity, sale.Date);
+
+
+                    }
+                    table.Write();
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error {ex.Message}");
+
             }
 
         }

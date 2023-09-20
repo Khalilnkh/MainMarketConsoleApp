@@ -25,6 +25,10 @@ namespace MarketConsoleApp.Services.Abstract
         public List<Sale> GetSales();
         public List<Sale> GetSalesByDateRange(DateTime minDate,DateTime maxDate);
         public List<Sale> GetSalesByPriceRange(int minPrice, int maxPrice);
+        public List<Sale> GetSalesByGivenDate(DateTime date);
+
+
+
 
 
 
@@ -33,12 +37,10 @@ namespace MarketConsoleApp.Services.Abstract
         //Satisin silinmesi - satisin ID-sine esasen silinmesi
 
 
-        //public List<Sale> AddSales(decimal amount, DateTime date, int saleItem, int productId);
         //public List<Product> GetSales(int id, decimal amount,DateOnly date,SaleItem saleItem);
         //public int ReturnProductOnSale(SaleItem saleItem,Product product,int quantity);
         //public List<Product> GetSales(int id, decimal amount, DateOnly date,int quantity);
 
-        //public List<Product> GetSalesByGivenDate(DateOnly date);
         //public int GetSalesByGivenId(int id);
 
 

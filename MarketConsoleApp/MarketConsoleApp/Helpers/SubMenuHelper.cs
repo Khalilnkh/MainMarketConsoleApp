@@ -106,6 +106,12 @@ namespace MarketConsoleApp.Helpers
                     case 5:
                         MenuService.GetSalesByDateRange();
                         break;
+                    case 6:
+                        MenuService.GetSalesByPriceRange();
+                        break;
+                    case 7:
+                        MenuService.GetSalesByGivenDate();
+                        break;
                     case 0:
                         break;
                     default:
