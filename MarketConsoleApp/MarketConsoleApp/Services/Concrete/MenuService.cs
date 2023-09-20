@@ -1,6 +1,7 @@
 ﻿using ConsoleTables;
 using MarketConsoleApp.Data.Enums;
 using MarketConsoleApp.Data.Models;
+using MarketConsoleApp.Helpers;
 using MarketConsoleApp.Services.Abstract;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,6 @@ namespace MarketConsoleApp.Services.Concrete
                 Console.WriteLine("Enter product's name:");
                 string name = Console.ReadLine()!;
                 ValidateMyString(name);
-
                 static void ValidateMyString(string s)
                 {
                     if (s.All(char.IsDigit))
@@ -264,38 +264,43 @@ namespace MarketConsoleApp.Services.Concrete
         {
             try
             {
-                var table = new ConsoleTable(" Sale ID", "Date", "Sale Amount");
-                //(ID, meblegi, mehsul sayi, tarixi)
-
-                foreach (var sale in marketService.GetSales())
+                var saleList = marketService.GetSales();
+                var tableSale = new ConsoleTable("Sale Id", "Price", "DateTime");
+                foreach (var sale in saleList)
                 {
-                    foreach (var product in marketService.GetProducts())
+                    sale.Amount = 0;
+                    foreach (var item in sale.SaleItems)
                     {
-                        foreach (var item in sale.SaleItems)
-                        {
-
-                            var saleItem = new SaleItem()
-                            {
-                                SaleId = sale.Id,
-                                ProductId = product.Id,
-                                Quantity = product.Quantity,
-                            };
-                            sale.Amount = product.Quantity - saleItem.Quantity;
-                            table.AddRow(sale.Id, sale.Date, saleItem);
-
-                        }
-
-
-
+                        sale.Amount += item.TotalPrice;
                     }
+                    tableSale.AddRow(sale.Id, sale.Amount, sale.Date);
                 }
+                tableSale.Write();
+                Console.WriteLine("---------------------------------------------------------------------------");
+                Console.WriteLine("SaleItems by saleId");
+                var forSaleItem = marketService.GetSales();
+                var productList = marketService.GetProducts();
 
-                table.Write();
+                var tableSaleItem = new ConsoleTable("Sale Id", "Product Name", "Product Price", "Quantity", "Total Price");
+                foreach (var sale in forSaleItem)
+                {
+                    foreach (var item in sale.SaleItems)
+                    {
+                        var product = productList.FirstOrDefault(x => x.Id == item.ProductId && sale.Id == item.SaleId);
+                        if (product == null)
+                            throw new Exception("Product not found");
+
+                        tableSaleItem.AddRow(item.SaleId, product.Name, product.Price, item.Quantity, item.TotalPrice);
+                    }
+
+                }
+                tableSaleItem.Write();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error {ex.Message}");
+                Console.WriteLine(ex.Message);
             }
+
         }
 
         public static void AddSale()
