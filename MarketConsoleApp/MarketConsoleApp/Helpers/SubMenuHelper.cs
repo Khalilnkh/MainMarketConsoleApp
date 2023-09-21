@@ -112,6 +112,9 @@ namespace MarketConsoleApp.Helpers
                     case 7:
                         MenuService.GetSalesByGivenDate();
                         break;
+                    case 8:
+                        MenuService.GetSalesById();
+                        break;
                     case 0:
                         break;
                     default:

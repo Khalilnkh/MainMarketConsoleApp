@@ -5,6 +5,8 @@ using MarketConsoleApp.Helpers;
 using MarketConsoleApp.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -453,7 +455,69 @@ namespace MarketConsoleApp.Services.Concrete
 
             }
 
+
+
         }
+
+        public static void GetSalesById()
+        {
+            try
+            {
+                Console.WriteLine("Please Enter sale Id");
+                int id = int.Parse(Console.ReadLine()!);
+
+                var tableSaleItem = new ConsoleTable("Sale Id", "Sales Amount", "Sale Date", "Sales Items");
+                var sales = marketService.GetSales().FirstOrDefault(x => x.Id == id);
+
+
+                foreach (var sale in marketService.GetSalesById(id))
+                {
+                    if (sale == null)
+                        throw new Exception("Sale not found");
+                    foreach (var item in sale.SaleItems)
+                    {
+
+
+                    }
+
+
+                }
+                tableSaleItem.Write();
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error {ex.Message}");
+
+            }
+
+        }
+
+        public static void MenuWithdrawalProductFromSale()
+        {
+            try
+            {
+                Console.WriteLine("Enter Sale Id: ");
+                int saleId = int.Parse(Console.ReadLine()!);
+
+                Console.WriteLine("Enter Product Id: ");
+                int productId = int.Parse(Console.ReadLine()!);
+
+                Console.WriteLine("Enter Quantity of Product: ");
+                int count = int.Parse(Console.ReadLine()!);
+
+                var refundProdcut = marketService.RefundProductFromSale(saleId, productId, count);
+                Console.WriteLine($"Withdraw the Product with ProductId={refundProdcut}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+
 
 
 

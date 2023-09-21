@@ -199,6 +199,8 @@ namespace MarketConsoleApp.Services.Concrete
                 throw new Exception("Min price can't be larger than max price!");
 
             var sale = _sales.Where(x => x.Amount >= minPrice && x.Amount <= maxPrice).ToList();
+            if (sale == null)
+                throw new Exception("Sale can not found");
             return sale;
         }
 
@@ -210,6 +212,64 @@ namespace MarketConsoleApp.Services.Concrete
                 throw new Exception("Sale can not found");
             return sale;
         }
+
+        public List<Sale> GetSalesById(int id)
+        {
+            if (id < 0)
+                throw new Exception("Id cant be less than 0");
+            var sale = _sales.FirstOrDefault(x => x.Id == id);
+            if (sale == null)
+                throw new Exception("Sale can not found");
+            return _sales;
+            
+        }
+
+        public int RefundProductFromSale(int saleId, int productId, int count)
+        {
+            if (saleId <= 0)
+                throw new Exception("Sale Id can't be less than 0!");
+
+            if (productId <= 0)
+                throw new Exception("Product id can't be less than 0!");
+
+            if (count <= 0)
+                throw new Exception("Count can't be less than 0!");
+
+            var sale = _sales.FirstOrDefault(x => x.Id == saleId);
+            if (sale == null)
+                throw new Exception($"Sale with Id {saleId} not found!");
+
+            var saleItem = sale.SaleItems.FirstOrDefault(x => x.ProductId == productId);
+            if (saleItem == null)
+                throw new Exception($"SaleItem with Id {productId} not found!");
+
+            var product = _products.FirstOrDefault(x => x.Id == saleItem.ProductId);
+
+            if (saleItem.Quantity<count)
+                throw new Exception($"Max {saleItem.Quantity} product could be deleted");
+
+
+            if (saleItem.Quantity > 0)
+            {
+
+                saleItem.Quantity -= count;
+                product!.Quantity += count;
+                saleItem.TotalPrice -= product.Price * count;
+                sale.Amount -= saleItem.TotalPrice;
+                if (saleItem.Quantity==0)
+                {
+                    sale.SaleItems.Remove(saleItem);
+
+
+                }
+
+            }
+           
+
+            return productId;
+        }
+
+      
 
 
 
