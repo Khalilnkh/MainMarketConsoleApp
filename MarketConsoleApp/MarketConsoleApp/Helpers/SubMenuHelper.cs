@@ -96,6 +96,7 @@ namespace MarketConsoleApp.Helpers
                         MenuService.AddSale();
                         break;
                     case 2:
+                        MenuService.RefundProductFromSale();
                         break;
                     case 3:
                         MenuService.DeleteSale();
@@ -113,7 +114,7 @@ namespace MarketConsoleApp.Helpers
                         MenuService.GetSalesByGivenDate();
                         break;
                     case 8:
-                        MenuService.GetSalesById();
+                        MenuService.GetSalesBySaleId();
                         break;
                     case 0:
                         break;

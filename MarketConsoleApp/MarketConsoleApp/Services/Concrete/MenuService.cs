@@ -424,7 +424,7 @@ namespace MarketConsoleApp.Services.Concrete
 
         }
 
-        
+
         public static void GetSalesByGivenDate()
         {
             Console.WriteLine("Enter datetime:");
@@ -441,42 +441,45 @@ namespace MarketConsoleApp.Services.Concrete
             table.Write();
         }
 
-        public static void GetSalesById()
+        public static void GetSalesBySaleId()
         {
             try
             {
+
                 Console.WriteLine("Please Enter sale Id");
-                int id = int.Parse(Console.ReadLine()!);
+                int saleId = int.Parse(Console.ReadLine()!);
 
-                var tableSaleItem = new ConsoleTable("Sale Id", "Sales Amount", "Sale Date", "Sales Items");
-                var sales = marketService.GetSales().FirstOrDefault(x => x.Id == id);
+                var saleOfSaleID = marketService.GetSalesBySaleId(saleId);
+                var products = marketService.GetProducts();
 
 
-                foreach (var sale in marketService.GetSalesById(id))
+                var saleItemsOfTable = new ConsoleTable("Sale Id", "Product name", "Products Price", "Quantity", "Total Price");
+
+                foreach (var sale in saleOfSaleID)
                 {
-                    if (sale == null)
-                        throw new Exception("Sale not found");
                     foreach (var item in sale.SaleItems)
                     {
+                        var product = products.FirstOrDefault(x => x.Id == item.ProductId);
+                        if (product != null)
+                        {
+                            throw new Exception("Product coudnt found");
 
-
+                        }
+                        saleItemsOfTable.AddRow(item.SaleId, product.Name, product.Price, item.Quantity, item.TotalPrice);
                     }
 
-
                 }
-                tableSaleItem.Write();
+                saleItemsOfTable.Write();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                Console.WriteLine($"Error {ex.Message}");
-
+                throw;
             }
-
         }
 
-        public static void MenuWithdrawalProductFromSale()
+        public static void RefundProductFromSale()
         {
             try
             {
