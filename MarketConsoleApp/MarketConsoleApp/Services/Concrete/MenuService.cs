@@ -424,39 +424,21 @@ namespace MarketConsoleApp.Services.Concrete
 
         }
 
+        
         public static void GetSalesByGivenDate()
         {
-            try
+            Console.WriteLine("Enter datetime:");
+            var date = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
+
+            var saleByGivenDate = marketService.GetSalesByGivenDate(date);
+
+            var table = new ConsoleTable("Sale Id", "Price", "SaleItems Count", "DateTime");
+            foreach (var sale in saleByGivenDate)
             {
-                Console.WriteLine("Please Enter datetime");
-                var date = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
-                var table = new ConsoleTable("ID", "Amount", "Quantity", "Date");
-
-                foreach (var sale in marketService.GetSalesByGivenDate(date))
-                {
-
-
-                    foreach (var item in sale.SaleItems)
-                    {
-                        table.AddRow(sale.Id, sale.Amount, item.Quantity, sale.Date);
-
-
-                    }
-                    table.Write();
-
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine($"Error {ex.Message}");
-
+                table.AddRow(sale.Id, sale.Amount, sale.SaleItems.Count, sale.Date);
             }
 
-
-
+            table.Write();
         }
 
         public static void GetSalesById()
