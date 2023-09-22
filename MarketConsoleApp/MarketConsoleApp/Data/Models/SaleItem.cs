@@ -19,7 +19,6 @@ namespace MarketConsoleApp.Data.Models
         public int SaleId { get; set; } 
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
-
         public Sale Sales { get; set; }   
     }
 }

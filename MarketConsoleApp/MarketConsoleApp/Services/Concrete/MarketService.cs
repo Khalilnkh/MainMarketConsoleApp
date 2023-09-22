@@ -32,7 +32,6 @@ namespace MarketConsoleApp.Services.Concrete
                 Price = price,
                 Department = department,
                 Quantity = quantity,
-
             };
 
             _products.Add(product);
@@ -61,8 +60,6 @@ namespace MarketConsoleApp.Services.Concrete
                 throw new Exception("Name can't be empty!");
             if (price < 0)
                 throw new Exception("price cant be less than 0");
-            //if (string.IsNullOrEmpty(department.ToString())) ;
-            //throw new Exception("department can't be empty!");
             if (quantity < 0)
                 throw new Exception("quantity cant be less than 0");
             var product = _products.Find(x => x.Id == id);
@@ -74,11 +71,7 @@ namespace MarketConsoleApp.Services.Concrete
             product.Department = department;
             product.Quantity = quantity;
 
-
-
             return product.Id;
-
-
         }
         public List<Product> GetProducts()
         {
@@ -115,7 +108,6 @@ namespace MarketConsoleApp.Services.Concrete
         }
         public int AddSale(List<SaleItem> saleItems, DateTime dateTime)
         {
-
             if (saleItems == null || !saleItems.Any())
                 throw new Exception("There are no sale items");
 
@@ -186,7 +178,7 @@ namespace MarketConsoleApp.Services.Concrete
             if (sale == null)
                 throw new Exception("Sale can not found");
             return sale;
-           
+
         }
 
         public List<Sale> GetSalesByPriceRange(int minPrice, int maxPrice)
@@ -206,8 +198,8 @@ namespace MarketConsoleApp.Services.Concrete
 
         public List<Sale> GetSalesByGivenDate(DateTime date)
         {
-           
-            var sale = _sales.Where(x => x.Date==date).ToList();
+
+            var sale = _sales.Where(x => x.Date == date).ToList();
             if (sale == null)
                 throw new Exception("Sale can not found");
             return sale;
@@ -219,9 +211,10 @@ namespace MarketConsoleApp.Services.Concrete
                 throw new Exception("Id cant be less than 0");
             var sale = _sales.FirstOrDefault(x => x.Id == saleId);
             if (sale == null)
+
                 throw new Exception("Sale can not found");
             return sale;
-            
+
         }
 
         public int RefundProductFromSale(int saleId, int productId, int count)
@@ -245,9 +238,8 @@ namespace MarketConsoleApp.Services.Concrete
 
             var product = _products.FirstOrDefault(x => x.Id == saleItem.ProductId);
 
-            if (saleItem.Quantity<count)
+            if (saleItem.Quantity < count)
                 throw new Exception($"Max {saleItem.Quantity} product could be deleted");
-
 
             if (saleItem.Quantity > 0)
             {
@@ -256,56 +248,16 @@ namespace MarketConsoleApp.Services.Concrete
                 product!.Quantity += count;
                 saleItem.TotalPrice -= product.Price * count;
                 sale.Amount -= saleItem.TotalPrice;
-                if (saleItem.Quantity==0)
+                if (saleItem.Quantity == 0)
                 {
                     sale.SaleItems.Remove(saleItem);
-
-
                 }
 
             }
-           
 
             return productId;
         }
 
-      
-
-
-
-
-
-        //public int AddSales(decimal amount, DateTime date, int saleItemId, int productId)
-        //{
-
-        //    if (amount < 0)
-        //        throw new Exception("Amount can't be 0 or less than 0!");
-        //    if (date < DateTime.Now)
-        //        throw new Exception("Sales can't be created in past!");
-        //    var saleItem = _saleItems.FirstOrDefault(x => x.Id == saleItemId);
-        //    if (saleItem is null)
-        //        throw new Exception($"SalesItem with ID ${saleItem.Id}: was not found!");
-        //    var products = _products.Where(x => x.Id == productId).ToList();
-        //    if (products is null)
-        //        throw new Exception($"SalesItem with ID ${}: was not found!");
-
-        //    var sale = new Sale
-        //    {
-        //        Amount = amount,
-        //        Date = date,
-        //        Product =products.First(),
-
-
-
-        //    };
-
-        //    _sales.Add(sale);
-
-
-        //    return sale.Id;
-
-
-        //}
 
 
     }

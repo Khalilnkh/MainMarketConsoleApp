@@ -30,33 +30,5 @@ namespace MarketConsoleApp.Services.Abstract
         public int RefundProductFromSale(int saleId, int productId, int count);
 
 
-
-
-
-
-
-
-        //Satisin silinmesi - satisin ID-sine esasen silinmesi
-
-
-        //public List<Product> GetSales(int id, decimal amount,DateOnly date,SaleItem saleItem);
-        //public int ReturnProductOnSale(SaleItem saleItem,Product product,int quantity);
-        //public List<Product> GetSales(int id, decimal amount, DateOnly date,int quantity);
-
-        //public int GetSalesByGivenId(int id);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

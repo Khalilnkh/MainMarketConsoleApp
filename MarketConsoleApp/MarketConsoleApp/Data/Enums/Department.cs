@@ -14,7 +14,5 @@ namespace MarketConsoleApp.Data.Enums
         alcohol,
         detergents,
         seafoods
-
-
     }
 }

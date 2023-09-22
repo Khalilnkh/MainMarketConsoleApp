@@ -267,19 +267,17 @@ namespace MarketConsoleApp.Services.Concrete
             try
             {
                 var saleList = marketService.GetSales();
-                var tableSale = new ConsoleTable("Sale Id", "Price", "DateTime","Amount");
+                var tableSale = new ConsoleTable("Sale Id", "Price", "DateTime");
                 foreach (var sale in saleList)
                 {
-                    
                     sale.Amount = 0;
                     foreach (var item in sale.SaleItems)
                     {
                         sale.Amount += item.TotalPrice;
                     }
-                    tableSale.AddRow(sale.Id, sale.Amount, sale.Date,sale.Amount);
+                    tableSale.AddRow(sale.Id, sale.Amount, sale.Date);
                 }
                 tableSale.Write();
-                Console.WriteLine("---------------------------------------------------------------------------");
                 
             }
             catch (Exception ex)
@@ -411,18 +409,26 @@ namespace MarketConsoleApp.Services.Concrete
 
         public static void GetSalesByGivenDate()
         {
-            Console.WriteLine("Enter datetime:");
-            var date = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
-
-            var saleByGivenDate = marketService.GetSalesByGivenDate(date);
-
-            var table = new ConsoleTable("Sale Id", "Price", "SaleItems Count", "DateTime");
-            foreach (var sale in saleByGivenDate)
+            try
             {
-                table.AddRow(sale.Id, sale.Amount, sale.SaleItems.Count, sale.Date);
-            }
+                Console.WriteLine("Enter datetime:");
+                var date = DateTime.ParseExact(Console.ReadLine()!, "dd.MM.yyyy HH:mm:ss", null);
 
-            table.Write();
+                var saleByGivenDate = marketService.GetSalesByGivenDate(date);
+
+                var table = new ConsoleTable("Sale Id", "Price", "SaleItems Count", "DateTime");
+                foreach (var sale in saleByGivenDate)
+                {
+                    table.AddRow(sale.Id, sale.Amount, sale.SaleItems.Count, sale.Date);
+                }
+
+                table.Write();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error {ex.Message}");
+
+            }
         }
 
         public static void GetSalesBySaleId()
