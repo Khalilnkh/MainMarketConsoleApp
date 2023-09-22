@@ -26,7 +26,7 @@ namespace MarketConsoleApp.Services.Abstract
         public List<Sale> GetSalesByDateRange(DateTime minDate,DateTime maxDate);
         public List<Sale> GetSalesByPriceRange(int minPrice, int maxPrice);
         public List<Sale> GetSalesByGivenDate(DateTime date);
-        public List<Sale> GetSalesBySaleId(int saleId);
+        public Sale GetSalesBySaleId(int saleId);
         public int RefundProductFromSale(int saleId, int productId, int count);
 
 

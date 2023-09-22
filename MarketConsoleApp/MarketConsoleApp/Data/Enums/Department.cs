@@ -8,12 +8,12 @@ namespace MarketConsoleApp.Data.Enums
 {
     public enum Department
     {
-        Meat=1,
-        Flour,
-        Milk,
-        Alcohol,
-        Detergents,
-        SeaFoods
+        meat=1,
+        flour,
+        milk,
+        alcohol,
+        detergents,
+        seafoods
 
 
     }

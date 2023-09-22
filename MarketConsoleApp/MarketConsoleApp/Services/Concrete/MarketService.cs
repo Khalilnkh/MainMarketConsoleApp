@@ -213,11 +213,11 @@ namespace MarketConsoleApp.Services.Concrete
             return sale;
         }
 
-        public List<Sale> GetSalesBySaleId(int saleId)
+        public Sale GetSalesBySaleId(int saleId)
         {
             if (saleId < 0)
                 throw new Exception("Id cant be less than 0");
-            var sale = _sales.Where(x => x.Id == saleId).ToList();
+            var sale = _sales.FirstOrDefault(x => x.Id == saleId);
             if (sale == null)
                 throw new Exception("Sale can not found");
             return sale;
@@ -226,13 +226,13 @@ namespace MarketConsoleApp.Services.Concrete
 
         public int RefundProductFromSale(int saleId, int productId, int count)
         {
-            if (saleId <= 0)
+            if (saleId < 0)
                 throw new Exception("Sale Id can't be less than 0!");
 
-            if (productId <= 0)
+            if (productId < 0)
                 throw new Exception("Product id can't be less than 0!");
 
-            if (count <= 0)
+            if (count < 0)
                 throw new Exception("Count can't be less than 0!");
 
             var sale = _sales.FirstOrDefault(x => x.Id == saleId);
