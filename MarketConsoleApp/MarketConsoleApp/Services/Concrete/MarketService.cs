@@ -132,7 +132,6 @@ namespace MarketConsoleApp.Services.Concrete
                     throw new Exception("Not enough quantity available for sale");
 
                 item.TotalPrice = product.Price * item.Quantity;
-                //totalPrice += item.TotalPrice;
 
                 var saleItem = new SaleItem()
                 {
